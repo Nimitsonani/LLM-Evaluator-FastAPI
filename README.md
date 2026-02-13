@@ -70,24 +70,31 @@ Supported providers:
 
 ## Tech Stack
 
-Backend:
+**Backend**
 - FastAPI (async)  
 - PostgreSQL  
 - SQLAlchemy (Async ORM)  
 
-Frontend:
+**Frontend**
 - Jinja2 templates (server-side rendering)  
 - HTML, CSS, JavaScript  
 
-Authentication:
+**Authentication**
 - JWT (HS256)  
 - HTTP-only cookies  
 
-External APIs:
+**External APIs**
 - Groq  
 - Gemini  
 - Mistral  
 - OpenRouter  
+
+---
+
+## Requirements
+
+- Python 3.10+  
+- PostgreSQL (running locally or remotely)
 
 ---
 
@@ -99,7 +106,9 @@ External APIs:
 pip install -r requirements.txt
 ```
 
-2. Create a `.env` file in the project root and add:
+2. Make sure PostgreSQL is running and create a database.
+
+3. Create a `.env` file in the project root and add:
 
 ```env
 GROQ_API_KEY=your_groq_api_key
@@ -111,7 +120,7 @@ POSTGRES_PASS=your_postgres_password
 SECRET_KEY=your_secret_key
 ```
 
-3. Run the application
+4. Run the application
 
 ```bash
 python main.py
