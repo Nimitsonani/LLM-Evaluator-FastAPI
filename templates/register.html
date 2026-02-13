@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body class="auth-body">
+    <form class="auth-form" action="{{url_for('register_post')}}" method="post">
+        <h2>Create account</h2>
+        <p class="subtitle">Join us to start exploring models.</p>
+
+        {% if flash %}
+        <p class="error-text">⚠ {{ flash }}</p>
+        {% endif %}
+
+        <label>Username</label>
+        <input name="username" placeholder="johndoe" required>
+
+        <label>Email</label>
+        <input name="email" placeholder="john@example.com" required>
+
+        <label>Password</label>
+        <input name="password" type="password" placeholder="••••••••" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

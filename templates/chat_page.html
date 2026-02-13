@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body class="chat-page-body">
+
+<div class="chat-header">
+    <div class="header-left">
+        <span>Model: {{name}}</span>
+        <button type="button" id="openRatingBtn" class="rate-btn-fixed">Rate Model</button>
+    </div>
+    <a href="/" style="text-decoration:none; font-size:14px; color:white;">Back to home</a>
+</div>
+
+<div class="chat-area">
+{% for i in range(0, conversation | length) %}
+    {% if i % 2 == 0 %}
+        <div class="message">{{ conversation[i]['you'] }}</div>
+    {% else %}
+        <div class="message user">{{ conversation[i]['user'] }}</div>
+    {% endif %}
+{% endfor %}
+</div>
+
+<form class="chat-footer" action="{{ url_for('post_model') }}?name={{name}}" method="post">
+    <div class="input-container">
+        <input name="query" placeholder="Ask anything…" required autocomplete="off">
+        <button type="submit">Send</button>
+    </div>
+</form>
+
+<div id="ratingModalWrapper" class="rating-modal-v2">
+    <div class="rating-modal-content">
+        <h3>Rate {{name}}</h3>
+        <p class="subtitle">Enter a score from 0 to 10</p>
+        <form action="{{ url_for('give_rating') }}?name={{name}}&is_logged_in={{ is_logged_in }}" method="post">
+            <input type="number" name="rating" step="0.1" min="0" max="10" class="rating-num-input" required>
+            <div class="rating-modal-actions">
+                <button type="button" class="btn-secondary" onclick="closeRatingModal()">Cancel</button>
+                <button type="submit" class="btn-primary">Submit Rating</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

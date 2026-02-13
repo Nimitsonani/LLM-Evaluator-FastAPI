@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Ratings</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body class="leaderboard-body">
+
+<h1>Leaderboard</h1>
+
+{% set items = ans.items() | list %}
+
+<div class="podium">
+    {% if items|length > 1 %}
+    <div class="podium-card">
+        <div class="rank-badge">2nd</div>
+        <div class="model-name" title="{{items[1][0]}}">{{items[1][0]}}</div>
+        <div class="rating">{{items[1][1]}}</div>
+    </div>
+    {% endif %}
+
+    {% if items|length > 0 %}
+    <div class="podium-card first-place">
+        <div class="rank-badge">🏆 Winner</div>
+        <div class="model-name" title="{{items[0][0]}}">{{items[0][0]}}</div>
+        <div class="rating">{{items[0][1]}}</div>
+    </div>
+    {% endif %}
+
+    {% if items|length > 2 %}
+    <div class="podium-card">
+        <div class="rank-badge">3rd</div>
+        <div class="model-name" title="{{items[2][0]}}">{{items[2][0]}}</div>
+        <div class="rating">{{items[2][1]}}</div>
+    </div>
+    {% endif %}
+</div>
+
+<div class="leaderboard-list">
+{% for m, r in items[3:] %}
+    <div class="leaderboard-row">
+        <span>{{m}}</span>
+        <strong style="color: #6366f1; font-size: 18px;">{{r}}</strong>
+    </div>
+{% endfor %}
+</div>
+
+<script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

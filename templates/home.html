@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+<div class="menu-wrapper">
+    <div class="hamburger" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        {% if is_logged_in %}
+            <a href="{{ url_for('account') }}">Account</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+    </div>
+</div>
+<div class="container">
+    <header>
+        <h1>Select a Model</h1>
+        <p class="description">Choose from our full range of supported AI engines.</p>
+
+        <div class="stats-nav">
+            <a href="{{url_for('last_24_hours')}}" class="nav-btn">Top 24 Hours</a>
+            <a href="{{url_for('weekly_top')}}" class="nav-btn">Weekly Top</a>
+        </div>
+    </header>
+
+    <div class="models">
+        <a href="{{url_for('model')}}?name=llama-3.3-70b-versatile" class="model-card">
+            <div class="icon-circle">LM</div>
+            <div class="model-info">
+                <span class="provider">Groq</span>
+                <span class="model-name">70-B-Versatile</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=openai/gpt-oss-20b" class="model-card">
+            <div class="icon-circle">GP</div>
+            <div class="model-info">
+                <span class="provider">OpenAI</span>
+                <span class="model-name">GPT OSS</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=gemini-2.5-flash" class="model-card">
+            <div class="icon-circle">GE</div>
+            <div class="model-info">
+                <span class="provider">Google</span>
+                <span class="model-name">Gemini Flash</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=mistral-large-latest" class="model-card">
+            <div class="icon-circle">MI</div>
+            <div class="model-info">
+                <span class="provider">Mistral</span>
+                <span class="model-name">Large</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=allenai/olmo-3.1-32b-think:free" class="model-card">
+            <div class="icon-circle">OL</div>
+            <div class="model-info">
+                <span class="provider">AllenAI</span>
+                <span class="model-name">OLMo 3.1</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=xiaomi/mimo-v2-flash:free" class="model-card">
+            <div class="icon-circle">MM</div>
+            <div class="model-info">
+                <span class="provider">Xiaomi</span>
+                <span class="model-name">MiMo V2 Flash</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=deepseek/deepseek-r1-0528:free" class="model-card">
+            <div class="icon-circle">DS</div>
+            <div class="model-info">
+                <span class="provider">DeepSeek</span>
+                <span class="model-name">DeepSeek R1</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=nex-agi/deepseek-v3.1-nex-n1:free" class="model-card">
+            <div class="icon-circle">NX</div>
+            <div class="model-info">
+                <span class="provider">Nex-AGI</span>
+                <span class="model-name">DeepSeek v3.1</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=nvidia/nemotron-3-nano-30b-a3b:free" class="model-card">
+            <div class="icon-circle">NV</div>
+            <div class="model-info">
+                <span class="provider">NVIDIA</span>
+                <span class="model-name">Nemotron 3 Nano</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=kwaipilot/kat-coder-pro:free" class="model-card">
+            <div class="icon-circle">KP</div>
+            <div class="model-info">
+                <span class="provider">KwaiPilot</span>
+                <span class="model-name">KAT Coder Pro</span>
+            </div>
+        </a>
+        <a href="{{url_for('model')}}?name=tngtech/deepseek-r1t2-chimera:free" class="model-card">
+            <div class="icon-circle">CH</div>
+            <div class="model-info">
+                <span class="provider">TNGTech</span>
+                <span class="model-name">R1T2 Chimera</span>
+            </div>
+        </a>
+    </div>
+</div>
+<script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+
+<!-- Hamburger Menu -->
+<div class="menu-wrapper">
+    <div class="hamburger" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 100px; max-width: 800px;">
+    <header style="text-align: center; margin-bottom: 60px;">
+        <h1 style="font-size: 36px; margin-bottom: 12px;">My Account</h1>
+        <p class="description" style="font-size: 16px; max-width: 600px; margin: 0 auto;">
+            Welcome back, <strong>@{{ username }}</strong>
+        </p>
+    </header>
+
+    <!-- Account Actions Grid -->
+    <div class="models" style="grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));">
+
+        <!-- My Ratings -->
+        <a href="{{ url_for('my_ratings') }}" class="model-card">
+            <div class="icon-circle" style="background: #f5f0ff;">📊</div>
+            <div class="model-info">
+                <span class="model-name">My Ratings</span>
+                <span class="provider">View and manage all your submitted ratings</span>
+            </div>
+        </a>
+
+        <!-- Change Username -->
+        <a href="{{ url_for('change_username') }}" class="model-card">
+            <div class="icon-circle" style="background: #f5f0ff;">👤</div>
+            <div class="model-info">
+                <span class="model-name">Change Username</span>
+                <span class="provider">Update your display name</span>
+            </div>
+        </a>
+
+        <!-- Change Password -->
+        <a href="{{ url_for('change_password') }}" class="model-card">
+            <div class="icon-circle" style="background: #f5f0ff;">🔐</div>
+            <div class="model-info">
+                <span class="model-name">Change Password</span>
+                <span class="provider">Keep your account secure</span>
+            </div>
+        </a>
+
+        <!-- Profile Settings (placeholder for future) -->
+        <a href="#" class="model-card" style="opacity: 0.6; pointer-events: none;">
+            <div class="icon-circle" style="background: #f5f0ff;">⚙️</div>
+            <div class="model-info">
+                <span class="model-name">Preferences</span>
+                <span class="provider">Notifications, theme, and more (coming soon)</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Footer Note -->
+    <div style="text-align: center; margin-top: 80px; padding: 32px 0; border-top: 1px solid #e2e8f0;">
+        <p style="color: #85409D; font-size: 14px; margin: 0;">
+            Questions or issues? Reach out to support anytime.
+        </p>
+    </div>
+</div>
+
+<script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

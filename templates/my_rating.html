@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ratings</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+
+<!-- Hamburger Menu -->
+<div class="menu-wrapper">
+    <div class="hamburger" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('account') }}">Account</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 100px; max-width: 900px;">
+    <header style="text-align: center; margin-bottom: 60px;">
+        <h1 style="font-size: 36px; margin-bottom: 12px;">My Ratings</h1>
+        <p class="description" style="font-size: 16px;">
+            All the ratings you've submitted across models
+        </p>
+    </header>
+
+    <!-- Ratings List -->
+    <div class="leaderboard-list">
+        <!-- You will loop over your ratings list here -->
+        <!-- Example structure for each item -->
+
+        {% for rating in ratings %}
+        <div class="leaderboard-row">
+            <div>
+                <div class="model-name" style="font-weight: 600; color: #4D2B8C;">{{ rating.model }}</div>
+                <div class="provider" style="margin-top: 4px;">Rated on {{ rating.created_at }}</div>
+            </div>
+            <div class="rating" style="font-size: 24px; font-weight: 800; color: #4D2B8C;">
+                {{ rating.rating }}/10
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- Empty State (optional, show if no ratings) -->
+    <!--
+    {% if ratings|length == 0 %}
+    <div style="text-align: center; padding: 80px 20px; color: #85409D;">
+        <p style="font-size: 18px;">You haven't rated any models yet.</p>
+        <p>Go chat with a model and submit your first rating!</p>
+    </div>
+    {% endif %}
+    -->
+
+</div>
+
+<script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

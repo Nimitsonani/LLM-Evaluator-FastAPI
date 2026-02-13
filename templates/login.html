@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+
+<body class="auth-body">
+
+<form class="auth-form" action="{{ url_for('post_login') }}" method="post">
+    <h2>Welcome back</h2>
+    <p class="subtitle">Please enter your details to sign in.</p>
+
+    {% if flash %}
+    <p class="error-text">⚠ {{ flash }}</p>
+    {% endif %}
+
+    <label>Email or Username</label>
+    <input name="email_or_username" placeholder="name@example.com" required>
+
+    <label>Password</label>
+    <input name="password" type="password" placeholder="••••••••" required>
+
+    <button type="submit">Sign in</button>
+</form>
+
+</body>
+</html>
